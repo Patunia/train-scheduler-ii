@@ -46,6 +46,14 @@ console.log(trainData.formfirsttime);
 console.log(trainData.formfrequency);
 console.log(trainData.dateAdded);
 
+alert("Train added!");
+
+// database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+//     var train = childSnapshot.val().formtrain;
+//     var destination = childSnapshot.val().formdestination;
+//     var frequency = childSnapshot.val().formfrequency;
+//     var firstTime = childSnapshot.val().formfirsttime;
+
 // train-example in-class
 var tFrequency = 3;
 
