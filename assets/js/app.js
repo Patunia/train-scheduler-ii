@@ -29,6 +29,7 @@ var firstTime = $("#first-train-input").val().trim();
 var frequency = $("#frequency-input").val().trim();
 
 var trainData = {
+
     name: train,
     destination: destination,
     firstTime: firstTime,
@@ -38,10 +39,10 @@ var trainData = {
 
 database.ref().push(trainData);
 
-console.log(trainData.formtrain);
-console.log(trainData.formdestination);
-console.log(trainData.formfirsttime);
-console.log(trainData.formfrequency);
+console.log(trainData.name);
+console.log(trainData.destination);
+console.log(trainData.firstTime);
+console.log(trainData.frequency);
 console.log(trainData.dateAdded);
 
 alert("Train added!");
@@ -57,10 +58,12 @@ alert("Train added!");
 // firebase
 
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
-    var train = childSnapshot.val().formtrain;
-    var destination = childSnapshot.val().formdestination;
-    var frequency = childSnapshot.val().formfrequency;
-    var firstTime = childSnapshot.val().formfirsttime;
+    console.log(childSnapshot.val());
+
+    var tName = childSnapshot.val().name;
+    var tDestination = childSnapshot.val().destination;
+    var tFrequency = childSnapshot.val().firstTime;
+    var tFirstTrain = childSnapshot.val().frequency;
 
     // train-example in-class
 
