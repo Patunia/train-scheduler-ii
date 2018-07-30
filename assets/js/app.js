@@ -61,16 +61,12 @@ alert("Train added!");
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     console.log(childSnapshot.val());
 
-    var tName = childSnapshot.val().name;
-    var tDestination = childSnapshot.val().destination;
-    var tFrequency = childSnapshot.val().firstTime;
-    var tFirstTrain = childSnapshot.val().frequency;
+    var name = childSnapshot.val().name;
+    var destination = childSnapshot.val().destination;
+    var firstTime = childSnapshot.val().firstTime;
+    var frequency = childSnapshot.val().frequency;
 
-    var timeArr = tFirstTrain.split(":");
-    var trainTime = moment().hours(timeArr[0]).minutes(timeArr[1]);
-    var maxMoment = moment.max(moment(), trainTime);
-    var tMinutes;
-    var tArrival;
+
     // train-example in-class
 
 var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
@@ -91,12 +87,9 @@ var tMinutesTillTrain = tFrequency - tRemainder;
 var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
-$("#train-table > tbody").append("</td><td>" + tName + "</td><td>" + tDestination + "</td><td>" +
-tFrequency + "</td><td>" + tArrival + "</td><td>" + tMinutes + "</td></tr>");
-},
-
-function(errorObject) {
-    console.log("Failed: " + errorObject.code);
+    var name = childSnapshot.val().name;
+    $("#train-table > tbody").append("</td><td>" + name + "</td><td>" + destination + "</td><td>" +
+frequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td></tr>");
 });
 
 
