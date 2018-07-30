@@ -19,6 +19,8 @@ setInterval(function(startTime) {
     $("#time").html(moment().format('YYYY-MM-DD dddd HH:mm:ss'));
 }, 1000);
 
+$("#time").text(currentTime.format("YYYY-MM-DD dddd hh:mm"));
+
 $("#train-entry-btn").on("click", function() {
 
 // firebase
@@ -34,7 +36,6 @@ var trainData = {
     destination: destination,
     firstTime: firstTime,
     frequency: frequency,
-    dateAdded: firebase.database.ServerValue.TIMESTAMP
 };
 
 database.ref().push(trainData);
@@ -43,7 +44,7 @@ console.log(trainData.name);
 console.log(trainData.destination);
 console.log(trainData.firstTime);
 console.log(trainData.frequency);
-console.log(trainData.dateAdded);
+
 
 alert("Train added!");
 
@@ -65,6 +66,11 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     var tFrequency = childSnapshot.val().firstTime;
     var tFirstTrain = childSnapshot.val().frequency;
 
+    var timeArr = tFirstTrain.split(":");
+    var trainTime = moment().hours(timeArr[0]).minutes(timeArr[1]);
+    var maxMoment = moment.max(moment(), trainTime);
+    var tMinutes;
+    var tArrival;
     // train-example in-class
 
 var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
@@ -85,12 +91,13 @@ var tMinutesTillTrain = tFrequency - tRemainder;
 var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
-$("#train-table > tbody").append("</td><td>" + train + "</td><td>" + destination + "</td><td>" +
-frequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td></tr>");
+$("#train-table > tbody").append("</td><td>" + tName + "</td><td>" + tDestination + "</td><td>" +
+tFrequency + "</td><td>" + tArrival + "</td><td>" + tMinutes + "</td></tr>");
 },
 
 function(errorObject) {
     console.log("Failed: " + errorObject.code);
 });
 
-$("#time").text(currentTime.format("YYYY-MM-DD dddd hh:mm"));
+
+
