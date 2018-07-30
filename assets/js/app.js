@@ -15,14 +15,22 @@ var config = {
 //moment
 
   setInterval(function(startTime) {
-    $("#time").html(moment().format('YYYY-MM-DD dddd HH:mm:ss'))
+    $("#time").html(moment().format('YYYY-MM-DD dddd HH:mm:ss'));
   }, 1000);
 
   $("#train-entry").on("click", function() {
     event.preventDefault();
 });
 
-// train-example
+// firebase
+
+    var train = $("#input-train-name").val().trim();
+    var destination = $("#input-destination").val().trim();
+    var firstTime = $("#input-first-train-time").val().trim();
+    var frequency = $("#input-frequency").val().trim();
+
+
+// train-example in-class
     var tFrequency = 3;
     var firstTime = "00:00";
 

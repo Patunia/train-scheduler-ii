@@ -13,6 +13,10 @@ p, h2 {
     color: white;
 }
 
+h3 {
+    color: slateblue;
+}
+
 .jumbotron{
     background:linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
     opacity: .98;
