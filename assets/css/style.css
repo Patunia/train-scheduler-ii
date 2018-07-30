@@ -28,4 +28,5 @@ p, h2 {
     -o-border-radius: 15px;
     opacity: .98;
     box-shadow: darkcyan 2px 4px 8px;
+    margin-bottom: 20px;
 }
