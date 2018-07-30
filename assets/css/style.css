@@ -16,4 +16,16 @@ p, h2 {
 .jumbotron{
     background:linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
     opacity: .98;
+    box-shadow: darkcyan 2px 4px 8px;
+
+}
+
+.card {
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    opacity: .98;
+    box-shadow: darkcyan 2px 4px 8px;
 }
