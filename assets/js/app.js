@@ -9,3 +9,12 @@ var config = {
   firebase.initializeApp(config);
 
   var database = firebase.database();
+
+  //moment
+
+  setInterval(function(startTime) {
+    $("#time").html(moment().format('hh:mm:ss a'))
+  }, 1000);
+
+  $("#train-entry").on("click", function() {
+    event.preventDefault();
