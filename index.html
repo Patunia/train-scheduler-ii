@@ -7,12 +7,11 @@
     <title>Train Schedule</title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://bootswatch.com/3/cerulean/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.0/moment.min.js"></script>
 </head>
@@ -23,7 +22,43 @@
 			<h1>Train Schedule</h1>
 			<h2>Plan your trip and never be late again!</h2>
 		</div>
+        <div class="card">
+                <div class="card-body">
+                  
+<form>
+        <div class="form-group row">
+          <label for="inputX" class="col-sm-2 col-form-label">X</label>
+          <div class="col-sm-10">
+            <input type="X" class="form-control" id="inputX" placeholder="X">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputY" class="col-sm-2 col-form-label">Y</label>
+          <div class="col-sm-10">
+            <input type="Y" class="form-control" id="inputY" placeholder="Y">
+          </div>
+        </div>
+          <div class="form-group row">
+          <label for="inputZ" class="col-sm-2 col-form-label">Z</label>
+          <div class="col-sm-10">
+            <input type="Z" class="form-control" id="inputZ" placeholder="Z">
+          </div>
+        </div>
+          <div class="form-group row">
+          <label for="inputAA" class="col-sm-2 col-form-label">AA</label>
+          <div class="col-sm-10">
+            <input type="AA" class="form-control" id="inputAA" placeholder="AA">
+          </div>
+        </div>
 
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+                </div>
+              </div>
         <footer id="footer" class="site-footer">
             <div class="container">
                 <p>&copy; 2018 PJB and coding bootcamp</p>
@@ -35,8 +70,11 @@
 </script>
 
     <!--js-->
-    <script src="assets/javascript/app.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="assets/js/app.js"></script>
 
 </body>
 </html>
