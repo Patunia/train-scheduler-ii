@@ -5,7 +5,7 @@ var config = {
     authDomain: "train-schedule-9b40e.firebaseapp.com",
     databaseURL: "https://train-schedule-9b40e.firebaseio.com",
     projectId: "train-schedule-9b40e",
-    storageBucket: "",
+    storageBucket: "train-schedule-9b40e.appspot.com",
     messagingSenderId: "300417295759"
 };
 
@@ -19,43 +19,42 @@ setInterval(function(startTime) {
     $("#time").html(moment().format('YYYY-MM-DD dddd HH:mm:ss'));
 }, 1000);
 
-$("#time").text(currentTime.format("YYYY-MM-DD dddd hh:mm"));
+// $("#time").text(currentTime.format("YYYY-MM-DD dddd hh:mm"));
 
 $("#train-entry-btn").on("click", function() {
 
-// firebase
+    // firebase
 
-var train = $("#train-name-input").val().trim();
-var destination = $("#destination-input").val().trim();
-var firstTime = $("#first-train-input").val().trim();
-var frequency = $("#frequency-input").val().trim();
+    var name = $("#train-name-input").val().trim();
+    var destination = $("#destination-input").val().trim();
+    var firstTime = $("#first-train-input").val().trim();
+    var frequency = $("#frequency-input").val().trim();
 
-var trainData = {
+    var trainData = {
 
-    name: train,
-    destination: destination,
-    firstTime: firstTime,
-    frequency: frequency,
-};
+        name: name,
+        destination: destination,
+        firstTime: firstTime,
+        frequency: frequency,
+    };
 
-database.ref().push(trainData);
+    database.ref().push(trainData);
 
-console.log(trainData.name);
-console.log(trainData.destination);
-console.log(trainData.firstTime);
-console.log(trainData.frequency);
+    console.log(trainData.name);
+    console.log(trainData.destination);
+    console.log(trainData.firstTime);
+    console.log(trainData.frequency);
 
+    alert("Train added!");
 
-alert("Train added!");
+    $("#train-name-input").val("");
+    $("#destination-input").val("");
+    $("#first-train-input").val("");
+    $("#frequency-input").val("");
 
-  $("#train-name-input").val("");
-  $("#destination-input").val("");
-  $("#first-train-input").val("");
-  $("#frequency-input").val("");
-
-  // Determine when the next train arrives.
-  return false;
+    return false;
 });
+
 // firebase
 
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
@@ -66,31 +65,26 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     var firstTime = childSnapshot.val().firstTime;
     var frequency = childSnapshot.val().frequency;
 
-
     // train-example in-class
 
-var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
+    var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
     console.log(firstTimeConverted);
 
-var currentTime = moment();
+    var currentTime = moment();
     console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
-var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
     console.log("DIFFERENCE IN TIME: " + diffTime); //not working as expected- logging numerical value date
 
-var tRemainder = diffTime % tFrequency;
+    var tRemainder = diffTime % frequency;
     console.log("Remainder: " + tRemainder);
 
-var tMinutesTillTrain = tFrequency - tRemainder;
+    var tMinutesTillTrain = frequency - tRemainder;
     console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
-var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
-    var name = childSnapshot.val().name;
-    $("#train-table > tbody").append("</td><td>" + name + "</td><td>" + destination + "</td><td>" +
-frequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td></tr>");
+    $("#train-table > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td></tr>");
+
 });
-
-
-
